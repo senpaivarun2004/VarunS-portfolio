@@ -1,0 +1,195 @@
+---
+// Contact.astro
+---
+
+<section id="contact" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border relative overflow-hidden">
+  <!-- Backdrop glow -->
+  <div class="absolute right-0 bottom-0 w-[400px] h-[400px] bg-accent-cyan/5 rounded-full blur-[120px] pointer-events-none z-0"></div>
+
+  <div class="max-w-5xl mx-auto z-10 relative">
+    <!-- Header -->
+    <div class="fade-in-up flex items-center gap-2 mb-12">
+      <span class="font-mono text-xs text-text-muted">// 09.</span>
+      <h2 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Contact</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-10 gap-12 md:gap-16 items-start">
+      <!-- Left Column: Direct Links & Profile info (40% / 4 columns) -->
+      <div class="md:col-span-4 space-y-6 fade-in-up">
+        <div>
+          <h3 class="text-3xl sm:text-4xl font-sans font-bold text-white tracking-tight leading-none mb-4">
+            Let's build something intelligent.
+          </h3>
+          <p class="font-sans text-sm text-text-secondary leading-relaxed font-normal">
+            Interested in Data Analytics, Business Intelligence, AI/ML models, Cybersecurity, or technology collaborations? Let's connect.
+          </p>
+        </div>
+
+        <!-- Links List -->
+        <div class="space-y-3 font-mono text-xs pt-4 border-t border-border/50 select-none">
+          <a href="https://github.com/senpaivarun2004" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-bg-surface border border-border hover:border-accent-cyan hover:text-white rounded-lg text-text-secondary transition-all">
+            <span class="flex items-center gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+              </svg>
+              <span>GitHub</span>
+            </span>
+            <span class="text-accent-cyan">senpaivarun2004 ↗</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/varun-s-95b7b8252" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-bg-surface border border-border hover:border-accent-cyan hover:text-white rounded-lg text-text-secondary transition-all">
+            <span class="flex items-center gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span>LinkedIn</span>
+            </span>
+            <span class="text-accent-cyan">varun-s-95b7b8252 ↗</span>
+          </a>
+
+          <a href="https://www.hackerrank.com/profile/senpaivarun" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-3.5 bg-bg-surface border border-border hover:border-accent-cyan hover:text-white rounded-lg text-text-secondary transition-all">
+            <span class="flex items-center gap-2.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0l-12 6.928v10.144l12 6.928 12-6.928v-10.144l-12-6.928zm3.6 15.6h-1.8v-3h-3.6v3h-1.8v-7.2h1.8v2.4h3.6v-2.4h1.8v7.2z"/>
+              </svg>
+              <span>HackerRank</span>
+            </span>
+            <span class="text-accent-cyan">senpaivarun ↗</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Interactive Contact Form (60% / 6 columns) -->
+      <div class="md:col-span-6 fade-in-up w-full">
+        <form 
+          id="contact-form"
+          class="space-y-5"
+        >
+          <!-- Anti-Spam / Captcha Bypass Configuration -->
+          <input type="hidden" name="_captcha" value="false">
+          
+          <!-- Name Input -->
+          <div class="space-y-1.5">
+            <label for="form-name" class="block font-mono text-[10px] uppercase tracking-wider text-text-secondary">Your Name</label>
+            <input 
+              type="text" 
+              name="name" 
+              id="form-name" 
+              required
+              placeholder="e.g. Alex Sharma"
+              class="w-full bg-bg-surface border border-border hover:border-border-hover focus:border-accent-cyan rounded-lg px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none transition-colors"
+            />
+          </div>
+
+          <!-- Email Input -->
+          <div class="space-y-1.5">
+            <label for="form-email" class="block font-mono text-[10px] uppercase tracking-wider text-text-secondary">Email Address</label>
+            <input 
+              type="email" 
+              name="email" 
+              id="form-email" 
+              required
+              placeholder="alex@organization.com"
+              class="w-full bg-bg-surface border border-border hover:border-border-hover focus:border-accent-cyan rounded-lg px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none transition-colors"
+            />
+          </div>
+
+          <!-- Message Input -->
+          <div class="space-y-1.5">
+            <label for="form-message" class="block font-mono text-[10px] uppercase tracking-wider text-text-secondary">Message</label>
+            <textarea 
+              name="message" 
+              id="form-message" 
+              rows="5" 
+              required
+              placeholder="Tell me about your project, dataset, or collaboration opportunity..."
+              class="w-full bg-bg-surface border border-border hover:border-border-hover focus:border-accent-cyan rounded-lg px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none transition-colors resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Ready / Prepared Alert -->
+          <div id="contact-success" class="hidden p-4 bg-bg-surface border border-accent-cyan/40 text-text-secondary rounded-lg text-sm flex flex-col gap-3">
+            <div class="flex items-center gap-3">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent-cyan shrink-0"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <div>
+                <p class="font-bold text-white mb-0.5">Thanks! Your message is ready to be sent.</p>
+                <p class="text-text-secondary text-xs">Opening your email client to send directly to Varun, or you can connect on LinkedIn.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 pt-2 border-t border-border/50">
+              <a id="email-client-link" href="#" class="px-4 py-1.5 rounded-md bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan hover:bg-accent-cyan hover:text-black font-mono text-xs transition-colors">
+                Open Email Client ↗
+              </a>
+              <a href="https://www.linkedin.com/in/varun-s-95b7b8252" target="_blank" rel="noopener noreferrer" class="text-xs text-text-secondary hover:text-white font-mono underline">
+                Connect on LinkedIn ↗
+              </a>
+            </div>
+          </div>
+
+          <!-- Error Alert -->
+          <div id="contact-error" class="hidden p-4 bg-[#2d0f11] border border-[#ef4444]/30 text-[#ef4444] rounded-lg text-sm flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            <div>
+              <p class="font-bold text-white mb-0.5">Please check the form fields</p>
+              <p class="text-[#fecaca] text-xs">Ensure your name, email, and message are filled out before proceeding.</p>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            id="contact-submit"
+            class="px-8 py-3.5 bg-white text-black font-sans font-medium rounded-full hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-md flex items-center justify-center gap-2 group text-sm w-full sm:w-auto cursor-pointer"
+          >
+            <span id="submit-text">Send Message</span>
+            <svg id="submit-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-200"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    const submitBtn = document.getElementById('contact-submit');
+    const successAlert = document.getElementById('contact-success');
+    const errorAlert = document.getElementById('contact-error');
+    const submitText = document.getElementById('submit-text');
+    const emailLink = document.getElementById('email-client-link');
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (successAlert) successAlert.classList.add('hidden');
+        if (errorAlert) errorAlert.classList.add('hidden');
+
+        const nameInput = document.getElementById('form-name');
+        const emailInput = document.getElementById('form-email');
+        const messageInput = document.getElementById('form-message');
+
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        const message = messageInput ? messageInput.value.trim() : '';
+
+        if (!name || !email || !message) {
+          if (errorAlert) errorAlert.classList.remove('hidden');
+          return;
+        }
+
+        const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
+        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+        const mailtoUri = `mailto:?subject=${subject}&body=${body}`;
+
+        if (emailLink) {
+          emailLink.href = mailtoUri;
+        }
+
+        // Truthful confirmation without fake server dispatch
+        if (successAlert) successAlert.classList.remove('hidden');
+        window.location.href = mailtoUri;
+      });
+    }
+  });
+</script>

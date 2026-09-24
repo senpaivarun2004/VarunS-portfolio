@@ -1,0 +1,76 @@
+---
+// Activities.astro
+
+interface JourneyPillar {
+  icon: string;
+  title: string;
+  note: string;
+  tags: string[];
+}
+
+const pillars: JourneyPillar[] = [
+  {
+    icon: "📊",
+    title: "Data Analytics & Dashboards",
+    note: "Crafted interactive Power BI dashboards, modeled complex DAX logic, and transformed real-world datasets from Kaggle and business sources.",
+    tags: ["Power BI", "DAX", "Power Query", "Excel"]
+  },
+  {
+    icon: "🤖",
+    title: "Applied AI & Machine Learning",
+    note: "Explored classification pipelines, neural network fundamentals, prompt engineering, and end-to-end NLP cyberbullying detectors.",
+    tags: ["Scikit-learn", "NLP", "Python", "Gen AI"]
+  },
+  {
+    icon: "🛡️",
+    title: "Cybersecurity & Online Safety",
+    note: "Investigated network security protocols, ethical hacking concepts, packet telemetry, and digital threat mitigation for safer digital experiences.",
+    tags: ["TCP/IP", "Kali Linux", "Threat Analysis"]
+  },
+  {
+    icon: "⚡",
+    title: "Continuous Learning in Public",
+    note: "Consistently sharpening SQL queries, experimenting with Kaggle challenges, and publishing open-source projects on GitHub.",
+    tags: ["GitHub", "SQL Labs", "Open Source Repos"]
+  }
+];
+---
+
+<section id="journey" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border select-none">
+  <div class="max-w-6xl mx-auto space-y-12">
+    <!-- Header -->
+    <div class="fade-in-up flex items-center gap-2">
+      <span class="font-mono text-xs text-accent-cyan">// 08.</span>
+      <h2 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Learning Journey &amp; Milestones</h2>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="fade-in-up grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {pillars.map((pillar) => (
+        <div class="bg-bg-surface border border-border hover:border-accent-cyan/40 hover:-translate-y-1 rounded-xl p-6 transition-all duration-200 flex flex-col justify-between shadow-sm">
+          <div>
+            <div class="w-10 h-10 rounded-lg bg-bg-elevated border border-border flex items-center justify-center text-lg mb-4">
+              {pillar.icon}
+            </div>
+            
+            <h3 class="font-sans text-base font-bold text-white tracking-tight mb-2">
+              {pillar.title}
+            </h3>
+            
+            <p class="font-sans text-xs text-text-secondary leading-relaxed font-normal mb-4">
+              {pillar.note}
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-3 border-t border-border/50">
+            {pillar.tags.map(t => (
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-bg-elevated text-text-muted">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

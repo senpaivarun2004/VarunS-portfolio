@@ -1,0 +1,95 @@
+---
+import "../styles/global.css";
+import { SparkleCursor } from "../components/SparkleCursor";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Varun S — Data Science & Analytics | AI/ML | Cybersecurity",
+  description = "Portfolio of Varun S. BCA Graduate & PGDM Graduate in Data Science & Analytics with Applied AI (Completed — 30 June 2026, Imarticus Learning). Specializing in Power BI, SQL, Python, Machine Learning, and Cybersecurity Threat Detection."
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth bg-black text-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="author" content="Varun S" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-bg-base text-text-primary selection:bg-accent-cyan selection:text-black">
+    <SparkleCursor client:idle />
+    <slot />
+
+    <!-- Scroll Reveal and Navigation Blur Script -->
+    <script>
+      const initAnimations = () => {
+        const revealCallback = (entries: IntersectionObserverEntry[], observer: IntersectionObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        };
+
+        const observer = new IntersectionObserver(revealCallback, {
+          threshold: 0.05,
+          rootMargin: "0px 0px -40px 0px",
+        });
+
+        document.querySelectorAll(".fade-in-up").forEach((el) => {
+          observer.observe(el);
+        });
+
+        const navbar = document.getElementById("navbar");
+        if (navbar) {
+          let scrollTicking = false;
+          const handleScroll = () => {
+            if (!scrollTicking) {
+              requestAnimationFrame(() => {
+                if (window.scrollY > 20) {
+                  navbar.classList.add("bg-black/90", "backdrop-blur-md", "border-b", "border-border");
+                } else {
+                  navbar.classList.remove("bg-black/90");
+                }
+                scrollTicking = false;
+              });
+              scrollTicking = true;
+            }
+          };
+
+          window.addEventListener("scroll", handleScroll, { passive: true });
+          handleScroll();
+        }
+      };
+
+      document.addEventListener("DOMContentLoaded", initAnimations);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+---
+// About.astro
+import { ScrollReveal } from "./ScrollReveal";
+---
+
+<section id="about" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border relative">
+  <!-- Subtle ambient glow -->
+  <div class="absolute left-0 top-1/4 w-[350px] h-[350px] bg-accent-cyan/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-10 gap-12 md:gap-16 items-start">
+      <!-- Left Column: Bio Text (60% / 6 columns) -->
+      <div class="md:col-span-6 space-y-6 fade-in-up">
+        <div class="flex items-center gap-2">
+          <span class="font-mono text-xs text-accent-cyan">// 01.</span>
+          <h2 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">About Me</h2>
+        </div>
+        
+        <ScrollReveal client:idle size="lg" align="left" variant="primary" textClassName="text-2xl sm:text-3xl font-sans font-bold text-white tracking-tight leading-tight">
+          Transforming complex datasets into actionable intelligence and safer digital systems.
+        </ScrollReveal>
+
+        <div class="space-y-4 font-sans text-base text-text-secondary leading-relaxed font-normal">
+          <p>
+            I'm <span class="text-white font-medium">Varun S</span>, a BCA Graduate &amp; PGDM Graduate with completed specialization in Data Science &amp; Analytics with Applied AI, and a focused interest in Artificial Intelligence, Machine Learning, and Cybersecurity.
+          </p>
+          <p>
+            I enjoy transforming raw, unstructured data into meaningful strategic insights through <span class="text-white font-medium">SQL, Python, Excel, and Power BI</span>, while continuously exploring modern AI-powered tools and generative workflows.
+          </p>
+          <p>
+            Beyond data pipelines, I am deeply intrigued by <span class="text-accent-cyan font-medium">Cybersecurity and Ethical Hacking</span>, particularly digital threat analysis, online safety, and ML-assisted cyberbullying detection systems. I believe in hands-on experimentation, building practical projects, and turning analytical models into real-world solutions.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-2 text-xs font-mono">
+            <span class="px-2.5 py-1 rounded bg-bg-surface border border-border text-white">Data</span>
+            <span class="text-accent-cyan self-center">+</span>
+            <span class="px-2.5 py-1 rounded bg-bg-surface border border-border text-white">AI</span>
+            <span class="text-accent-cyan self-center">+</span>
+            <span class="px-2.5 py-1 rounded bg-bg-surface border border-border text-white">Analytics</span>
+            <span class="text-accent-cyan self-center">+</span>
+            <span class="px-2.5 py-1 rounded bg-bg-surface border border-border text-white">Security</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Quick Facts Card (40% / 4 columns) -->
+      <div class="md:col-span-4 fade-in-up transition-transform duration-300 hover:-translate-y-1">
+        <div class="bg-bg-surface border border-border rounded-xl p-6 relative overflow-hidden shadow-2xl backdrop-blur-md">
+          <div class="absolute -right-16 -top-16 w-32 h-32 bg-accent-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <h4 class="font-mono text-xs uppercase tracking-wider text-text-muted mb-6 border-b border-border pb-3 flex items-center justify-between">
+            <span>Profile Overview</span>
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          </h4>
+          
+          <ul class="space-y-4 font-mono text-xs text-text-secondary">
+            <li class="flex items-start gap-3">
+              <span class="text-accent-cyan mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              </span>
+              <div>
+                <span class="text-text-muted block text-[10px] uppercase">Location</span>
+                <span class="text-white">Bangalore, Karnataka, India</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-cyan mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+              </span>
+              <div>
+                <span class="text-text-muted block text-[10px] uppercase">Academic Qualifications</span>
+                <span class="text-white">BCA Graduate &amp; PGDM Graduate</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-cyan mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </span>
+              <div>
+                <span class="text-text-muted block text-[10px] uppercase">Postgraduate Qualification</span>
+                <span class="text-white">PGDM in Data Science &amp; Analytics with Applied AI · Imarticus Learning (Completed — 30 June 2026)</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3">
+              <span class="text-accent-cyan mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+              </span>
+              <div>
+                <span class="text-text-muted block text-[10px] uppercase">Focus Domains</span>
+                <span class="text-white">Data Analytics, BI, AI/ML, Threat Analysis</span>
+              </div>
+            </li>
+            <li class="flex items-start gap-3 border-t border-border pt-4 mt-2">
+              <span class="text-accent-cyan mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              </span>
+              <div>
+                <span class="text-text-muted block text-[10px] uppercase">GitHub Profile</span>
+                <a href="https://github.com/senpaivarun2004" target="_blank" rel="noopener noreferrer" class="text-accent-cyan hover:underline break-all">
+                  github.com/senpaivarun2004
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

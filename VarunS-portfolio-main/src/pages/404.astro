@@ -1,0 +1,48 @@
+---
+// 404.astro
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout title="404: Page Not Found | Varun S" description="The page you are looking for does not exist.">
+  <!-- Sticky Navigation Header -->
+  <Nav />
+
+  <main class="relative min-h-[85vh] flex flex-col items-center justify-center text-center px-6 py-32 bg-black overflow-hidden select-none">
+    <!-- Radial glow background -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] pointer-events-none z-0">
+      <div class="w-full h-full bg-[radial-gradient(circle,rgba(0,216,255,0.06)_0%,rgba(0,0,0,0)_70%)] rounded-full pulse-glow-bg"></div>
+    </div>
+
+    <div class="max-w-md mx-auto z-10 relative space-y-6">
+      <!-- Glow outline 404 -->
+      <h1 class="text-[clamp(6rem,15vw,10rem)] font-sans font-bold leading-none tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-800 drop-shadow-[0_0_35px_rgba(0,216,255,0.15)]">
+        404
+      </h1>
+      
+      <div class="space-y-2">
+        <h2 class="text-xl sm:text-2xl font-sans font-bold text-white tracking-tight">
+          Protocol Out of Sync
+        </h2>
+        <p class="font-sans text-sm text-text-secondary leading-relaxed max-w-sm mx-auto">
+          The requested route was not found. It may have been relocated, or it does not exist in our system registry.
+        </p>
+      </div>
+
+      <!-- Action Button -->
+      <div class="pt-4">
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-sans font-medium rounded-full hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-[0_4px_20px_rgba(255,255,255,0.15)] text-sm cursor-pointer"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="rotate-180 transition-transform group-hover:-translate-x-1"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          Return to Terminal
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Page Footer -->
+  <Footer />
+</BaseLayout>

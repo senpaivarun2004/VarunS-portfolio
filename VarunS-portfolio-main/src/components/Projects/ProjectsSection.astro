@@ -1,0 +1,47 @@
+---
+import { projects } from "../../data/projects";
+import CybersafeShieldCard from "./CybersafeShieldCard.astro";
+import ProjectCard from "./ProjectCard.astro";
+
+const featuredProject = projects.find(p => p.isFeatured);
+const secondaryProjects = projects.filter(p => !p.isFeatured);
+---
+
+<section id="projects" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border">
+  <div class="max-w-6xl mx-auto space-y-12">
+    <!-- Header -->
+    <div class="fade-in-up flex items-center gap-2">
+      <span class="font-mono text-xs text-accent-cyan">// 03.</span>
+      <h2 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Featured Projects</h2>
+    </div>
+
+    <!-- Featured Project Section -->
+    <div class="fade-in-up space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+        <span class="text-xs uppercase font-mono tracking-wider text-text-secondary">Signature Machine Learning &amp; Security Engineering</span>
+      </div>
+      {featuredProject && <CybersafeShieldCard />}
+    </div>
+
+    <!-- Grid Header -->
+    <div class="fade-in-up pt-12 border-t border-border/50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <h3 class="text-xl sm:text-2xl font-sans font-bold text-white tracking-tight">Data Analytics &amp; Applied AI Projects</h3>
+        <p class="text-xs text-text-secondary font-mono mt-1">Power BI Dashboards, SQL Analytics, ML Experiments &amp; Fraud Concepts</p>
+      </div>
+      <div class="flex items-center gap-4 text-xs font-mono text-text-muted">
+        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Completed</span>
+        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-yellow-400"></span> Learning / Practice</span>
+        <span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-400"></span> Concept</span>
+      </div>
+    </div>
+
+    <!-- Secondary Projects Grid -->
+    <div class="fade-in-up grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {secondaryProjects.map(project => (
+        <ProjectCard project={project} />
+      ))}
+    </div>
+  </div>
+</section>

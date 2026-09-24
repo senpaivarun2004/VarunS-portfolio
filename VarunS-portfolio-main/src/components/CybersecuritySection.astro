@@ -1,0 +1,120 @@
+---
+// CybersecuritySection.astro
+---
+
+<section id="cybersecurity" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border relative overflow-hidden select-none">
+  <!-- Neon green/cyan security glow -->
+  <div class="absolute right-0 top-1/3 w-[450px] h-[450px] bg-emerald-500/5 rounded-full blur-[130px] pointer-events-none"></div>
+
+  <div class="max-w-6xl mx-auto space-y-12 relative z-10">
+    <!-- Header -->
+    <div class="fade-in-up flex items-center gap-2">
+      <span class="font-mono text-xs text-emerald-400">// 04.</span>
+      <h2 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Cybersecurity &amp; Threat Defense</h2>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <!-- Left text / Focus areas (5 cols) -->
+      <div class="lg:col-span-5 space-y-6 fade-in-up">
+        <h3 class="text-2xl sm:text-3xl font-sans font-bold text-white tracking-tight leading-tight">
+          Ethical Hacking, Network Security &amp; Online Safety
+        </h3>
+        <p class="font-sans text-sm text-text-secondary leading-relaxed font-normal">
+          Exploring digital vulnerability assessment, network packet scrutiny, and machine learning models for proactive threat mitigation and cyberbullying defense.
+        </p>
+
+        <!-- Focus areas checklist -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 font-mono text-xs">
+          <div class="p-3 bg-bg-surface border border-border rounded-lg flex items-center gap-2">
+            <span class="text-emerald-400">🛡️</span>
+            <span class="text-white">Threat Analysis</span>
+          </div>
+          <div class="p-3 bg-bg-surface border border-border rounded-lg flex items-center gap-2">
+            <span class="text-accent-cyan">🌐</span>
+            <span class="text-white">Network &amp; TCP/IP</span>
+          </div>
+          <div class="p-3 bg-bg-surface border border-border rounded-lg flex items-center gap-2">
+            <span class="text-purple-400">🐧</span>
+            <span class="text-white">Kali Linux Tools</span>
+          </div>
+          <div class="p-3 bg-bg-surface border border-border rounded-lg flex items-center gap-2">
+            <span class="text-emerald-400">⚡</span>
+            <span class="text-white">Ethical Hacking</span>
+          </div>
+        </div>
+
+        <div class="p-4 bg-emerald-950/20 border border-emerald-500/20 rounded-xl text-xs font-mono text-emerald-300">
+          Featured Focus: Proactive online safety systems using NLP classification to detect toxic interactions and promote safer digital spaces.
+        </div>
+      </div>
+
+      <!-- Right security dashboard visual simulation (7 cols) -->
+      <div class="lg:col-span-7 fade-in-up">
+        <div class="bg-bg-surface border border-border rounded-xl p-6 relative overflow-hidden shadow-2xl backdrop-blur-md">
+          <div class="flex items-center justify-between pb-4 border-b border-border/80 mb-6">
+            <div class="flex items-center gap-2 font-mono text-xs text-white">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="font-bold">CYBERSAFE SHIELD // WORKFLOW SIMULATION</span>
+            </div>
+            <span class="font-mono text-[10px] text-text-muted px-2 py-0.5 rounded bg-bg-elevated border border-border">
+              Illustrative detection workflow
+            </span>
+          </div>
+
+          <!-- Security metrics row -->
+          <div class="grid grid-cols-3 gap-3 mb-6 font-mono">
+            <div class="p-3 bg-black/60 border border-border rounded-lg text-center">
+              <span class="text-text-muted text-[10px] uppercase block">Detection Type</span>
+              <span class="text-white text-xs font-bold">NLP + SVM</span>
+            </div>
+            <div class="p-3 bg-black/60 border border-border rounded-lg text-center">
+              <span class="text-text-muted text-[10px] uppercase block">Analysis Engine</span>
+              <span class="text-emerald-400 text-xs font-bold">Scikit-learn</span>
+            </div>
+            <div class="p-3 bg-black/60 border border-border rounded-lg text-center">
+              <span class="text-text-muted text-[10px] uppercase block">Backend Store</span>
+              <span class="text-accent-cyan text-xs font-bold">Flask + SQLite</span>
+            </div>
+          </div>
+
+          <!-- Interactive detection workflow simulation -->
+          <div class="space-y-2 font-mono text-xs">
+            <div class="p-3 bg-black/40 border border-emerald-500/30 rounded-lg flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400">✓</span>
+                <span class="text-text-secondary text-[11px]">[SIMULATED STREAM] Text ingestion: benign interaction</span>
+              </div>
+              <span class="text-emerald-400 text-[10px] uppercase">Clean</span>
+            </div>
+            <div class="p-3 bg-black/40 border border-red-500/30 rounded-lg flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-red-400">⚠</span>
+                <span class="text-text-secondary text-[11px]">[NLP CLASSIFIER] Hostile token pattern flagged</span>
+              </div>
+              <span class="text-red-400 text-[10px] uppercase font-bold">Flagged</span>
+            </div>
+            <div class="p-3 bg-black/40 border border-accent-cyan/30 rounded-lg flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-accent-cyan">ℹ</span>
+                <span class="text-text-secondary text-[11px]">[MODEL INFERENCE] TF-IDF + LinearSVC prediction pipeline</span>
+              </div>
+              <span class="text-accent-cyan text-[10px] uppercase">Simulated</span>
+            </div>
+          </div>
+
+          <div class="mt-6 pt-4 border-t border-border flex items-center justify-between">
+            <span class="font-mono text-xs text-text-secondary">Project: Prevent Cyberbullying on Social Media</span>
+            <a 
+              href="https://github.com/senpaivarun2004/Project-on-Prevent-Cyber-Bulling-in-social-media" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="font-mono text-xs text-accent-cyan hover:underline flex items-center gap-1"
+            >
+              Inspect Source ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

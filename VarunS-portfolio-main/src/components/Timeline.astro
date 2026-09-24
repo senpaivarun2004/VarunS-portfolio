@@ -1,0 +1,88 @@
+---
+// Timeline.astro
+
+interface TimelineEntry {
+  period: string;
+  degree: string;
+  institution: string;
+  status: string;
+  coursework?: string[];
+  description: string;
+}
+
+const entries: TimelineEntry[] = [
+  {
+    period: "Completed — 30 June 2026",
+    degree: "PGDM in Data Science & Analytics with Applied AI",
+    institution: "Imarticus Learning",
+    status: "Completed",
+    coursework: [
+      "SQL", "Advanced Excel", "Power BI", "Data Visualization",
+      "Statistics", "EDA", "Business Analytics", "Machine Learning",
+      "Applied AI", "Generative AI"
+    ],
+    description: "Intensive professional postgraduate curriculum focused on real-world business analytics, applied predictive modeling, advanced DAX, and generative AI workflows."
+  },
+  {
+    period: "2022 — 2025",
+    degree: "Bachelor of Computer Applications (BCA)",
+    institution: "Soundarya Institute of Management and Science, Bangalore",
+    status: "Graduated",
+    coursework: [
+      "Database Management Systems", "Object-Oriented Programming (Java)",
+      "Web Technologies", "Computer Networks", "Cybersecurity Basics"
+    ],
+    description: "Built strong computational foundations in programming, relational databases, data structures, and computer networking. Completed academic capstones and hands-on projects."
+  }
+];
+---
+
+<section id="education" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border relative select-none">
+  <div class="max-w-5xl mx-auto space-y-12">
+    <!-- Header -->
+    <div class="fade-in-up flex items-center gap-2">
+      <span class="font-mono text-xs text-accent-cyan">// 07.</span>
+      <h2 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Education &amp; Academic Training</h2>
+    </div>
+
+    <div class="space-y-8">
+      {entries.map((entry) => (
+        <div class="p-6 md:p-8 bg-bg-surface border border-border rounded-xl hover:border-accent-cyan/40 transition-all duration-200">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-4">
+            <div>
+              <span class="font-mono text-xs text-accent-cyan px-2.5 py-0.5 rounded bg-accent-cyan/10 border border-accent-cyan/20">
+                {entry.period}
+              </span>
+              <h3 class="font-sans text-xl sm:text-2xl font-bold text-white tracking-tight mt-2">
+                {entry.degree}
+              </h3>
+              <p class="font-mono text-xs text-text-secondary mt-1">
+                {entry.institution}
+              </p>
+            </div>
+            <span class="font-mono text-xs px-3 py-1 rounded-full border border-border bg-black/60 text-white self-start md:self-auto">
+              {entry.status}
+            </span>
+          </div>
+
+          <p class="font-sans text-sm text-text-secondary leading-relaxed mb-6 font-normal">
+            {entry.description}
+          </p>
+
+          {entry.coursework && (
+            <div class="pt-4 border-t border-border/50">
+              <span class="text-[10px] font-mono uppercase tracking-wider text-text-muted block mb-2">Core Coursework &amp; Focus:</span>
+              <div class="flex flex-wrap gap-1.5">
+                {entry.coursework.map(c => (
+                  <span class="px-2 py-0.5 rounded bg-bg-elevated border border-border text-[11px] font-mono text-white/80">
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

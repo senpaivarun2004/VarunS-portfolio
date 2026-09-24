@@ -1,0 +1,60 @@
+---
+// Skills.astro
+import { skillCategories } from "../data/skills";
+
+const getCategoryColor = (categoryTitle: string) => {
+  if (categoryTitle.includes("Data Analytics")) return "border-accent-cyan/30 text-accent-cyan bg-accent-cyan/10";
+  if (categoryTitle.includes("Programming")) return "border-purple-500/30 text-purple-400 bg-purple-500/10";
+  if (categoryTitle.includes("Data Science")) return "border-emerald-500/30 text-emerald-400 bg-emerald-500/10";
+  if (categoryTitle.includes("Cybersecurity")) return "border-red-500/30 text-red-400 bg-red-500/10";
+  return "border-blue-500/30 text-blue-400 bg-blue-500/10";
+};
+---
+
+<section id="skills" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border relative select-none">
+  <div class="max-w-6xl mx-auto space-y-12">
+    <!-- Header -->
+    <div class="fade-in-up flex items-center gap-2">
+      <span class="font-mono text-xs text-accent-cyan">// 05.</span>
+      <h2 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Skills Ecosystem</h2>
+    </div>
+
+    <div class="fade-in-up max-w-3xl space-y-3">
+      <h3 class="text-2xl sm:text-3xl font-sans font-bold text-white tracking-tight">
+        Interactive Technical Toolkit
+      </h3>
+      <p class="font-sans text-sm text-text-secondary leading-relaxed font-normal">
+        From relational query writing and business intelligence dashboards to machine learning classification pipelines and network defense.
+      </p>
+    </div>
+
+    <!-- Skill Categories Grid -->
+    <div class="fade-in-up grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {skillCategories.map((cat) => (
+        <div class="p-6 bg-bg-surface border border-border hover:border-border-hover rounded-xl flex flex-col justify-between transition-all duration-200 hover:-translate-y-1 shadow-sm">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <h4 class="font-sans text-base sm:text-lg font-bold text-white tracking-tight">
+                {cat.title}
+              </h4>
+              <span class={`font-mono text-[9px] uppercase tracking-wider px-2 py-0.5 rounded border ${getCategoryColor(cat.title)}`}>
+                Core
+              </span>
+            </div>
+            <p class="font-sans text-xs text-text-secondary leading-relaxed font-normal mb-5">
+              {cat.description}
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 pt-4 border-t border-border/50">
+            {cat.skills.map((skill) => (
+              <span class="px-2.5 py-1 bg-bg-elevated border border-border/70 text-white/90 rounded text-xs font-mono hover:border-accent-cyan hover:text-accent-cyan transition-colors">
+                {skill.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

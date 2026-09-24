@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import AnalyticsWorkflow from "../components/AnalyticsWorkflow.astro";
+import ProjectsSection from "../components/Projects/ProjectsSection.astro";
+import CybersecuritySection from "../components/CybersecuritySection.astro";
+import Skills from "../components/Skills.astro";
+import GitHubReposSection from "../components/GitHubReposSection";
+import Timeline from "../components/Timeline.astro";
+import Activities from "../components/Activities.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<BaseLayout>
+  <!-- Navigation Header -->
+  <Nav />
+
+  <!-- Page Content Sections -->
+  <main class="relative">
+    <Hero />
+    <About />
+    <AnalyticsWorkflow />
+    <ProjectsSection />
+    <CybersecuritySection />
+    <Skills />
+
+    <!-- Live GitHub Section -->
+    <section id="github" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border select-none">
+      <div class="max-w-6xl mx-auto space-y-12">
+        <div class="fade-in-up flex items-center gap-2">
+          <span class="font-mono text-xs text-accent-cyan">// 06.</span>
+          <h2 class="text-xs uppercase tracking-widest text-text-muted font-mono font-bold">Live GitHub Integration</h2>
+        </div>
+        <div class="fade-in-up max-w-3xl space-y-3">
+          <h3 class="text-2xl sm:text-3xl font-sans font-bold text-white tracking-tight">
+            Repositories &amp; Codebases
+          </h3>
+          <p class="font-sans text-sm text-text-secondary leading-relaxed font-normal">
+            Direct sync with <a href="https://github.com/senpaivarun2004" target="_blank" rel="noopener noreferrer" class="text-accent-cyan hover:underline">github.com/senpaivarun2004</a>. Filter by tech stack or explore confirmed public repositories below.
+          </p>
+        </div>
+        <div class="fade-in-up">
+          <GitHubReposSection client:visible />
+        </div>
+      </div>
+    </section>
+
+    <Timeline />
+    <Activities />
+    <Contact />
+  </main>
+
+  <!-- Page Footer -->
+  <Footer />
+</BaseLayout>
