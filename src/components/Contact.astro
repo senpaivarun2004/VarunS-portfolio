@@ -1,5 +1,6 @@
 ---
 // Contact.astro
+const web3formsAccessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || "";
 ---
 
 <section id="contact" class="py-24 md:py-32 px-6 md:px-12 bg-black border-t border-border relative overflow-hidden">
@@ -64,10 +65,12 @@
         <form 
           id="contact-form"
           class="space-y-5"
+          data-access-key={web3formsAccessKey}
+          novalidate
         >
-          <!-- Anti-Spam / Captcha Bypass Configuration -->
-          <input type="hidden" name="_captcha" value="false">
-          
+          <!-- Honeypot field for bot protection -->
+          <input type="checkbox" name="botcheck" id="botcheck" class="hidden" style="display: none;">
+
           <!-- Name Input -->
           <div class="space-y-1.5">
             <label for="form-name" class="block font-mono text-[10px] uppercase tracking-wider text-text-secondary">Your Name</label>
@@ -94,6 +97,19 @@
             />
           </div>
 
+          <!-- Subject Input -->
+          <div class="space-y-1.5">
+            <label for="form-subject" class="block font-mono text-[10px] uppercase tracking-wider text-text-secondary">Subject</label>
+            <input 
+              type="text" 
+              name="subject" 
+              id="form-subject" 
+              required
+              placeholder="e.g. Data Analytics / Collaboration Inquiry"
+              class="w-full bg-bg-surface border border-border hover:border-border-hover focus:border-accent-cyan rounded-lg px-4 py-3 text-sm text-white placeholder-text-muted focus:outline-none transition-colors"
+            />
+          </div>
+
           <!-- Message Input -->
           <div class="space-y-1.5">
             <label for="form-message" class="block font-mono text-[10px] uppercase tracking-wider text-text-secondary">Message</label>
@@ -107,19 +123,16 @@
             ></textarea>
           </div>
 
-          <!-- Ready / Prepared Alert -->
+          <!-- Success Alert -->
           <div id="contact-success" class="hidden p-4 bg-bg-surface border border-accent-cyan/40 text-text-secondary rounded-lg text-sm flex flex-col gap-3">
             <div class="flex items-center gap-3">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent-cyan shrink-0"><polyline points="20 6 9 17 4 12"></polyline></svg>
               <div>
-                <p class="font-bold text-white mb-0.5">Thanks! Your message is ready to be sent.</p>
-                <p class="text-text-secondary text-xs">Opening your email client to send directly to Varun, or you can connect on LinkedIn.</p>
+                <p class="font-bold text-white mb-0.5">Message delivered successfully!</p>
+                <p class="text-text-secondary text-xs">Thank you for reaching out. Your message has been sent directly to Varun's inbox.</p>
               </div>
             </div>
             <div class="flex items-center gap-3 pt-2 border-t border-border/50">
-              <a id="email-client-link" href="#" class="px-4 py-1.5 rounded-md bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan hover:bg-accent-cyan hover:text-black font-mono text-xs transition-colors">
-                Open Email Client ↗
-              </a>
               <a href="https://www.linkedin.com/in/varun-s-95b7b8252" target="_blank" rel="noopener noreferrer" class="text-xs text-text-secondary hover:text-white font-mono underline">
                 Connect on LinkedIn ↗
               </a>
@@ -130,8 +143,8 @@
           <div id="contact-error" class="hidden p-4 bg-[#2d0f11] border border-[#ef4444]/30 text-[#ef4444] rounded-lg text-sm flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="shrink-0"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
             <div>
-              <p class="font-bold text-white mb-0.5">Please check the form fields</p>
-              <p class="text-[#fecaca] text-xs">Ensure your name, email, and message are filled out before proceeding.</p>
+              <p id="contact-error-title" class="font-bold text-white mb-0.5">Please check the form fields</p>
+              <p id="contact-error-message" class="text-[#fecaca] text-xs">Ensure your name, email, and message are filled out before proceeding.</p>
             </div>
           </div>
 
@@ -139,10 +152,14 @@
           <button 
             type="submit" 
             id="contact-submit"
-            class="px-8 py-3.5 bg-white text-black font-sans font-medium rounded-full hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-md flex items-center justify-center gap-2 group text-sm w-full sm:w-auto cursor-pointer"
+            class="px-8 py-3.5 bg-white text-black font-sans font-medium rounded-full hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-md flex items-center justify-center gap-2 group text-sm w-full sm:w-auto cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:scale-100"
           >
             <span id="submit-text">Send Message</span>
             <svg id="submit-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="group-hover:translate-x-1 transition-transform duration-200"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <svg id="submit-spinner" class="hidden animate-spin h-4 w-4 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
           </button>
         </form>
       </div>
@@ -154,41 +171,155 @@
   document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('contact-form');
     const submitBtn = document.getElementById('contact-submit');
+    const submitText = document.getElementById('submit-text');
+    const submitIcon = document.getElementById('submit-icon');
+    const submitSpinner = document.getElementById('submit-spinner');
     const successAlert = document.getElementById('contact-success');
     const errorAlert = document.getElementById('contact-error');
-    const submitText = document.getElementById('submit-text');
-    const emailLink = document.getElementById('email-client-link');
+    const errorTitle = document.getElementById('contact-error-title');
+    const errorMessage = document.getElementById('contact-error-message');
+
+    let isSubmitting = false;
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const showError = (title, message) => {
+      if (errorTitle) errorTitle.textContent = title;
+      if (errorMessage) errorMessage.textContent = message;
+      if (errorAlert) errorAlert.classList.remove('hidden');
+      if (successAlert) successAlert.classList.add('hidden');
+    };
+
+    const hideError = () => {
+      if (errorAlert) errorAlert.classList.add('hidden');
+    };
+
+    const showSuccess = () => {
+      if (successAlert) successAlert.classList.remove('hidden');
+      if (errorAlert) errorAlert.classList.add('hidden');
+    };
+
+    const setLoading = (loading) => {
+      isSubmitting = loading;
+      if (submitBtn) {
+        submitBtn.disabled = loading;
+      }
+      if (submitText) {
+        submitText.textContent = loading ? 'Sending...' : 'Send Message';
+      }
+      if (submitIcon) {
+        if (loading) {
+          submitIcon.classList.add('hidden');
+        } else {
+          submitIcon.classList.remove('hidden');
+        }
+      }
+      if (submitSpinner) {
+        if (loading) {
+          submitSpinner.classList.remove('hidden');
+        } else {
+          submitSpinner.classList.add('hidden');
+        }
+      }
+    };
 
     if (form) {
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        if (isSubmitting) return;
+
+        hideError();
         if (successAlert) successAlert.classList.add('hidden');
-        if (errorAlert) errorAlert.classList.add('hidden');
 
         const nameInput = document.getElementById('form-name');
         const emailInput = document.getElementById('form-email');
+        const subjectInput = document.getElementById('form-subject');
         const messageInput = document.getElementById('form-message');
+        const botcheckInput = document.getElementById('botcheck');
 
         const name = nameInput ? nameInput.value.trim() : '';
         const email = emailInput ? emailInput.value.trim() : '';
+        const subject = subjectInput ? subjectInput.value.trim() : '';
         const message = messageInput ? messageInput.value.trim() : '';
+        const botcheck = botcheckInput ? botcheckInput.checked : false;
 
-        if (!name || !email || !message) {
-          if (errorAlert) errorAlert.classList.remove('hidden');
+        // Anti-spam honeypot
+        if (botcheck) {
           return;
         }
 
-        const subject = encodeURIComponent(`Portfolio Inquiry from ${name}`);
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
-        const mailtoUri = `mailto:?subject=${subject}&body=${body}`;
-
-        if (emailLink) {
-          emailLink.href = mailtoUri;
+        // Field validation
+        if (!name) {
+          showError('Name required', 'Please provide your name.');
+          if (nameInput) nameInput.focus();
+          return;
         }
 
-        // Truthful confirmation without fake server dispatch
-        if (successAlert) successAlert.classList.remove('hidden');
-        window.location.href = mailtoUri;
+        if (!email) {
+          showError('Email required', 'Please provide your email address.');
+          if (emailInput) emailInput.focus();
+          return;
+        }
+
+        if (!emailRegex.test(email)) {
+          showError('Invalid email', 'Please provide a valid email address (e.g. name@example.com).');
+          if (emailInput) emailInput.focus();
+          return;
+        }
+
+        if (!subject) {
+          showError('Subject required', 'Please provide a subject for your message.');
+          if (subjectInput) subjectInput.focus();
+          return;
+        }
+
+        if (!message) {
+          showError('Message required', 'Please enter a message before sending.');
+          if (messageInput) messageInput.focus();
+          return;
+        }
+
+        const accessKey = form.dataset.accessKey ? form.dataset.accessKey.trim() : '';
+
+        if (!accessKey) {
+          showError('Configuration Missing', 'Web3Forms access key is not configured. Please set the PUBLIC_WEB3FORMS_KEY environment variable.');
+          return;
+        }
+
+        setLoading(true);
+
+        try {
+          const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+              access_key: accessKey,
+              name: name,
+              email: email,
+              subject: subject,
+              message: message,
+              from_name: `${name} (Portfolio Inquiry)`,
+            }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            showSuccess();
+            form.reset();
+          } else {
+            const failMessage = data.message || 'Submission failed. Please check your details and try again later.';
+            showError('Submission Failed', failMessage);
+          }
+        } catch (err) {
+          showError('Network Error', 'Unable to reach the delivery server. Please check your connection or try again later.');
+        } finally {
+          setLoading(false);
+        }
       });
     }
   });
